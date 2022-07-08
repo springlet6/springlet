@@ -23,7 +23,6 @@ public class TestController {
 
     @GetMapping(value = "/")
     public Bean test(@RequestBody Bean bean) {
-        ScheduleUtil.schedule(2000, () -> System.out.println(111));
         bean.setId(1111L);
         log.info("{}", bean);
         return bean;

@@ -1,6 +1,7 @@
 package cn.springlet.fast;
 
 import cn.springlet.core.bean.vo.BaseVO;
+import cn.springlet.crypt.annotation.Decrypt;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,5 +13,6 @@ import lombok.Setter;
 @Getter
 public class Bean extends BaseVO {
     private Long id;
+    @Decrypt
     private String i2d;
 }

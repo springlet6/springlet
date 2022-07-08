@@ -15,6 +15,7 @@
     <modules>
         <module>springlet-bom</module>
         <module>springlet-core</module>
+        <module>springlet-crypt</module>
         <module>springlet-fast</module>
         <module>springlet-mybatis-plus</module>
     </modules>
