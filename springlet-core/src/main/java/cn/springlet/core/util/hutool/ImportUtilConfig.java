@@ -1,4 +1,4 @@
-package cn.springlet.core.auto.hutool;
+package cn.springlet.core.util.hutool;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

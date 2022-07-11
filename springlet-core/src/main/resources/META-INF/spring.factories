@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+ cn.springlet.core.util.hutool.ImportUtilConfig
