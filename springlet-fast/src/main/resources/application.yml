@@ -4,7 +4,7 @@ server:
 spring:
   application:
     # 应用名称
-    name: cutepet-order
+    name: springlet-fast
 
 springlet:
   crypt:

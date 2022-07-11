@@ -2,8 +2,11 @@ package cn.springlet.fast;
 
 import cn.springlet.core.bean.vo.BaseVO;
 import cn.springlet.crypt.annotation.Decrypt;
+import cn.springlet.crypt.annotation.Encrypt;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 /**
  * @author watermelon
@@ -12,7 +15,22 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Bean extends BaseVO {
+
+    @Decrypt
+    @Encrypt
     private Long id;
     @Decrypt
+    @Encrypt
     private String i2d;
+    @Decrypt
+    @Encrypt
+    private Bean bean;
+
+    @Decrypt
+    @Encrypt
+    private List<Bean> beans;
+
+    @Decrypt
+    @Encrypt
+    private List<String> beanss;
 }

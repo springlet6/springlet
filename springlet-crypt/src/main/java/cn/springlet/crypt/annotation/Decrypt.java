@@ -1,6 +1,7 @@
 package cn.springlet.crypt.annotation;
 
-import cn.springlet.crypt.enums.Algorithm;
+import cn.springlet.crypt.CryptStrategy;
+import cn.springlet.crypt.strategy.RSAStrategy;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
@@ -8,6 +9,7 @@ import java.lang.annotation.*;
 
 /**
  * 解密
+ * 可作用于 String 类型字段  实体  Collection
  *
  * @author watermelon
  * @time 2020/9/24
@@ -19,11 +21,11 @@ import java.lang.annotation.*;
 public @interface Decrypt {
 
     /**
-     * 算法
+     * 算法策略
      *
      * @return
      */
-    Algorithm algorithm() default Algorithm.RSA;
+    Class<? extends CryptStrategy> strategy() default RSAStrategy.class;
 
     /**
      * 私钥

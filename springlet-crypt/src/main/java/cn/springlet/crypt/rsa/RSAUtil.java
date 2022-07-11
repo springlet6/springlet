@@ -43,10 +43,10 @@ public class RSAUtil {
     public static String encrypt(String text) {
         init();
 
-        log.info("encrypt：明文：{}", text);
+        log.debug("encrypt：明文：{}", text);
         //使用 公钥 加密
         String encryptStr = rsa.encryptBase64(text, KeyType.PublicKey);
-        log.info("encrypt：密文：{}", encryptStr);
+        log.debug("encrypt：密文：{}", encryptStr);
         return encryptStr;
     }
 
@@ -58,10 +58,10 @@ public class RSAUtil {
      */
     public static String decrypt(String cipherText) {
         init();
-        log.info("decrypt：密文：{}", cipherText);
+        log.debug("decrypt：密文：{}", cipherText);
         //使用 私钥 解密
         String decryptStr = rsa.decryptStr(cipherText, KeyType.PrivateKey, CharsetUtil.CHARSET_UTF_8);
-        log.info("decrypt：明文：{}", decryptStr);
+        log.debug("decrypt：明文：{}", decryptStr);
         return decryptStr;
     }
 
@@ -73,10 +73,10 @@ public class RSAUtil {
      */
     public static String encrypt(String text, String privateKey, String publicKey) {
         RSA rsa_ = new RSA(privateKey, publicKey);
-        log.info("encrypt：明文：{}", text);
+        log.debug("encrypt：明文：{}", text);
         //使用 公钥 加密
         String encryptStr = rsa_.encryptBase64(text, KeyType.PublicKey);
-        log.info("encrypt：密文：{}", encryptStr);
+        log.debug("encrypt：密文：{}", encryptStr);
         return encryptStr;
     }
 
@@ -88,10 +88,10 @@ public class RSAUtil {
      */
     public static String decrypt(String cipherText, String privateKey, String publicKey) {
         RSA rsa_ = new RSA(privateKey, publicKey);
-        log.info("decrypt：密文：{}", cipherText);
+        log.debug("decrypt：密文：{}", cipherText);
         //使用 私钥 解密
         String decryptStr = rsa_.decryptStr(cipherText, KeyType.PrivateKey, CharsetUtil.CHARSET_UTF_8);
-        log.info("decrypt：明文：{}", decryptStr);
+        log.debug("decrypt：明文：{}", decryptStr);
         return decryptStr;
     }
 
