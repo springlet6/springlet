@@ -1,4 +1,4 @@
-package cn.springlet.core.bean;
+package cn.springlet.core.util;
 
 import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.util.ReflectUtil;
