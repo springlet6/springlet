@@ -25,7 +25,7 @@ public class DatabaseEnumDeserializer implements ObjectDeserializer {
 
     @Override
     public int getFastMatchToken() {
-        // 仅仅匹配字符串类型的值 TODO 看能否匹配其它的
+        // 匹配字符串类型的值
         return JSONToken.LITERAL_STRING;
     }
 }

@@ -1,5 +1,7 @@
 package cn.springlet.fast;
 
+import cn.springlet.core.enums.YesNoEnum;
+import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +24,10 @@ public class TestController {
 
     @GetMapping(value = "/")
     public Bean test(@RequestBody Bean bean) {
-        bean.setId(1111L);
+        bean.setId(YesNoEnum.Y);
+        String s = JSON.toJSONString(bean);
+        Bean bean1 = JSON.parseObject(s, Bean.class);
+
         log.info("{}", bean);
         return bean;
     }

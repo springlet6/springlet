@@ -6,6 +6,7 @@ import cn.springlet.core.bean.vo.BaseVO;
 import com.alibaba.fastjson.JSON;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 
@@ -104,15 +105,29 @@ public class SignUtil {
             }
             Object v = map.get(k);
             System.out.println(JSON.toJSONString(v));
-            sb.append(k).append("=").append(v instanceof Collection || !isJavaClass(v.getClass()) ? JSON.toJSONString(v) : v);
+            sb.append(k).append("=").append(v instanceof Collection || (isNotGeneralType(v.getClass())) ? JSON.toJSONString(v) : v);
         }
         sb.append(secretKeyFieldName).append("=").append(secretKey);
         return sb.toString();
     }
 
 
-    public static boolean isJavaClass(Class<?> clz) {
-        return clz != null && clz.getClassLoader() == null;
+    /**
+     * 排除基础类型、jdk类型、枚举类型的字段
+     *
+     * @param clazz
+     * @return
+     */
+    private static boolean isNotGeneralType(Class<?> clazz) {
+        return clazz != null
+                && clazz.getClassLoader() != null
+                && !clazz.isPrimitive()
+                && clazz.getPackage() != null
+                && !clazz.isEnum()
+                && !StringUtils.startsWith(clazz.getPackage().getName(), "javax.")
+                && !StringUtils.startsWith(clazz.getPackage().getName(), "java.")
+                && !StringUtils.startsWith(clazz.getName(), "javax.")
+                && !StringUtils.startsWith(clazz.getName(), "java.");
     }
 
     public static void main(String[] args) {

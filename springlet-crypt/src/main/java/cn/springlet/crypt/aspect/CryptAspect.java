@@ -7,6 +7,7 @@ import cn.springlet.crypt.annotation.Decrypt;
 import cn.springlet.crypt.annotation.Encrypt;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,6 +17,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ import java.util.List;
 
 /**
  * 切面
+ * //todo 参考 脱敏 实现基于 jackson 的 字段加密解密，优化处理逻辑
  *
  * @author watermelon
  * @time 2020/9/24
@@ -144,7 +147,7 @@ public class CryptAspect {
                 continue;
             }
 
-            if (!isJavaClass(fieldType)) {
+            if (isNotGeneralType(fieldType) && !Modifier.isStatic(field.getModifiers())) {
                 field.setAccessible(Boolean.TRUE);
                 handleItem(field.get(item), isEncrypt);
                 field.setAccessible(Boolean.FALSE);
@@ -209,7 +212,21 @@ public class CryptAspect {
     }
 
 
-    public static boolean isJavaClass(Class<?> clz) {
-        return clz != null && clz.getClassLoader() == null;
+    /**
+     * 排除基础类型、jdk类型、枚举类型的字段
+     *
+     * @param clazz
+     * @return
+     */
+    private static boolean isNotGeneralType(Class<?> clazz) {
+        return clazz != null
+                && clazz.getClassLoader() != null
+                && !clazz.isPrimitive()
+                && clazz.getPackage() != null
+                && !clazz.isEnum()
+                && !StringUtils.startsWith(clazz.getPackage().getName(), "javax.")
+                && !StringUtils.startsWith(clazz.getPackage().getName(), "java.")
+                && !StringUtils.startsWith(clazz.getName(), "javax.")
+                && !StringUtils.startsWith(clazz.getName(), "java.");
     }
 }

@@ -29,6 +29,7 @@
         <hutool.version>5.8.4</hutool.version>
 
         <easyexcel.version>2.2.7</easyexcel.version>
+        <ballcat-common-desensitize.version>0.7.1</ballcat-common-desensitize.version>
 
 
         <item.version>1.0.0</item.version>
@@ -89,6 +90,13 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <!--数据脱敏-->
+            <dependency>
+                <groupId>com.hccake</groupId>
+                <artifactId>ballcat-common-desensitize</artifactId>
+                <version>${ballcat-common-desensitize.version}</version>
             </dependency>
 
             <!-- 公共资源池 -->

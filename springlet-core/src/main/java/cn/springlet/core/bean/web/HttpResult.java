@@ -14,7 +14,7 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
- * 统一定义返回前端对象 //Todo 增加 错误码枚举以及对应的方法，优先级更高
+ * 统一定义返回前端对象
  *
  * @author Administrator
  */
