@@ -2,7 +2,7 @@ package cn.springlet.core.auto.exception;
 
 
 import cn.springlet.core.bean.web.HttpResult;
-import cn.springlet.core.constant.ErrCodeStatus;
+import cn.springlet.core.enums.ResultCodeEnum;
 import cn.springlet.core.exception.web_return.HttpResultAssertException;
 import cn.springlet.core.exception.web_return.ParameterVerificationException;
 import cn.springlet.core.exception.web_return.ReturnMsgException;
@@ -118,7 +118,7 @@ public class DefaultExceptionAdvice {
             }
         }
         log.error(sb.toString(), e);
-        return HttpResult.error(ErrCodeStatus.BAD_METHOD, sb.toString());
+        return HttpResult.error(ResultCodeEnum.BAD_METHOD.code(), sb.toString());
     }
 
 

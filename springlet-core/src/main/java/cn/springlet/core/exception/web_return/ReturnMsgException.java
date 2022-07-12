@@ -1,6 +1,6 @@
 package cn.springlet.core.exception.web_return;
 
-import cn.springlet.core.constant.ErrCodeStatus;
+import cn.springlet.core.enums.ResultCodeEnum;
 import cn.springlet.core.util.ExceptionHandlerUtil;
 import cn.springlet.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ public class ReturnMsgException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
 
-    private Integer code = ErrCodeStatus.ERROR;
+    private Integer code = ResultCodeEnum.ERROR.code();
 
     private String message;
 

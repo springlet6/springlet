@@ -2,7 +2,8 @@ package cn.springlet.core.bean.web;
 
 import cn.hutool.core.date.DateUtil;
 import cn.springlet.core.bean.vo.BaseVO;
-import cn.springlet.core.constant.ErrCodeStatus;
+import cn.springlet.core.enums.BaseResultCodeEnum;
+import cn.springlet.core.enums.ResultCodeEnum;
 import cn.springlet.core.exception.web_return.HttpResultAssertException;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -13,7 +14,7 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
- * 统一定义返回前端对象
+ * 统一定义返回前端对象 //Todo 增加 错误码枚举以及对应的方法，优先级更高
  *
  * @author Administrator
  */
@@ -21,10 +22,6 @@ import java.util.function.Supplier;
 public class HttpResult<T> extends BaseVO {
 
     private static final long serialVersionUID = 1L;
-
-    public static final String SUCCESS_MSG = "请求成功";
-    public static final String ERROR_MSG = "请求失败";
-
 
     /**
      * 状态码
@@ -54,38 +51,13 @@ public class HttpResult<T> extends BaseVO {
     private HashMap<String, Object> ext;
 
     /**
-     * 初始化一个新创建的 HttpResult 对象，使其表示一个空消息。
-     */
-    public HttpResult() {
-    }
-
-    /**
-     * 初始化一个新创建的 HttpResult 对象
-     *
-     * @param msg 返回内容
-     */
-    public HttpResult(String msg) {
-        this(ErrCodeStatus.SUCCESS, msg);
-    }
-
-    /**
-     * 初始化一个新创建的 HttpResult 对象
-     *
-     * @param code 状态码
-     * @param msg  返回内容
-     */
-    public HttpResult(int code, String msg) {
-        this(code, msg, null);
-    }
-
-    /**
      * 初始化一个新创建的 HttpResult 对象
      *
      * @param code 状态码
      * @param msg  返回内容
      * @param data 数据对象
      */
-    public HttpResult(int code, String msg, T data) {
+    private HttpResult(int code, String msg, T data) {
         this.code = code;
         this.msg = msg;
         this.serverTime = DateUtil.now();
@@ -100,7 +72,7 @@ public class HttpResult<T> extends BaseVO {
      * @return
      */
     public boolean isSuccess() {
-        return ErrCodeStatus.SUCCESS == code;
+        return ResultCodeEnum.SUCCESS.code().equals(code);
     }
 
     /**
@@ -158,13 +130,48 @@ public class HttpResult<T> extends BaseVO {
         this.ext = ext;
     }
 
+
+    /**
+     * 返回自定义消息
+     *
+     * @param resultCodeEnum
+     * @return
+     */
+    public static <T> HttpResult<T> div(BaseResultCodeEnum resultCodeEnum) {
+        return HttpResult.div(resultCodeEnum, null);
+    }
+
+    /**
+     * 返回自定义消息
+     *
+     * @param resultCodeEnum
+     * @param data           数据对象
+     * @return
+     */
+    public static <T> HttpResult<T> div(BaseResultCodeEnum resultCodeEnum, T data) {
+        return HttpResult.div(resultCodeEnum.code(), resultCodeEnum.msg(), data);
+    }
+
+
+    /**
+     * 返回成功消息
+     *
+     * @param code
+     * @param msg  返回内容
+     * @param data 数据对象
+     * @return 成功消息
+     */
+    public static <T> HttpResult<T> div(int code, String msg, T data) {
+        return new HttpResult<T>(code, msg, data);
+    }
+
     /**
      * 返回成功消息
      *
      * @return 成功消息
      */
     public static <T> HttpResult<T> success() {
-        return HttpResult.success(SUCCESS_MSG);
+        return HttpResult.div(ResultCodeEnum.SUCCESS);
     }
 
     /**
@@ -173,51 +180,30 @@ public class HttpResult<T> extends BaseVO {
      * @return 成功消息
      */
     public static <T> HttpResult<T> success(T data) {
-        return HttpResult.success(SUCCESS_MSG, data);
+        return HttpResult.div(ResultCodeEnum.SUCCESS, data);
     }
 
     /**
      * 返回成功消息
      *
      * @param msg 返回内容
-     * @return 成功消息
+     * @return
      */
     public static <T> HttpResult<T> success(String msg) {
-        return new HttpResult<T>(msg);
+        return HttpResult.div(ResultCodeEnum.SUCCESS.code(), msg, null);
+
     }
 
-    /**
-     * 返回成功消息
-     *
-     * @param msg  返回内容
-     * @param data 数据对象
-     * @return 成功消息
-     */
-    public static <T> HttpResult<T> success(String msg, T data) {
-        return new HttpResult<T>(ErrCodeStatus.SUCCESS, msg, data);
-    }
-
-    /**
-     * 返回成功消息
-     *
-     * @param code
-     * @param msg  返回内容
-     * @param data 数据对象
-     * @return 成功消息
-     */
-    public static <T> HttpResult<T> success(int code, String msg, T data) {
-        return new HttpResult<T>(code, msg, data);
-    }
 
     /**
      * 返回成功消息
      *
      * @param code
      * @param data 数据对象
-     * @return 成功消息
+     * @return
      */
     public static <T> HttpResult<T> success(int code, T data) {
-        return new HttpResult<T>(code, SUCCESS_MSG, data);
+        return HttpResult.div(code, ResultCodeEnum.SUCCESS.msg(), data);
     }
 
     /**
@@ -226,28 +212,17 @@ public class HttpResult<T> extends BaseVO {
      * @return
      */
     public static <T> HttpResult<T> error() {
-        return HttpResult.error(ERROR_MSG);
+        return HttpResult.div(ResultCodeEnum.ERROR_REQUEST);
     }
 
     /**
      * 返回错误消息
      *
      * @param msg 返回内容
-     * @return 警告消息
+     * @return
      */
     public static <T> HttpResult<T> error(String msg) {
-        return HttpResult.error(msg, null);
-    }
-
-    /**
-     * 返回错误消息
-     *
-     * @param msg  返回内容
-     * @param data 数据对象
-     * @return 警告消息
-     */
-    public static <T> HttpResult<T> error(String msg, T data) {
-        return new HttpResult<T>(ErrCodeStatus.ERROR, msg, data);
+        return HttpResult.div(ResultCodeEnum.ERROR_REQUEST.code(), msg, null);
     }
 
     /**
@@ -255,10 +230,10 @@ public class HttpResult<T> extends BaseVO {
      *
      * @param code 状态码
      * @param msg  返回内容
-     * @return 警告消息
+     * @return
      */
     public static <T> HttpResult<T> error(int code, String msg) {
-        return new HttpResult<T>(code, msg, null);
+        return HttpResult.div(code, msg, null);
     }
 
     /**
@@ -284,6 +259,7 @@ public class HttpResult<T> extends BaseVO {
         }
         return data;
     }
+
 
     /**
      * 断言 成功
