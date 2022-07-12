@@ -26,7 +26,7 @@ import java.util.List;
 
 /**
  * 切面
- * //todo 参考 脱敏 实现基于 jackson 的 字段加密解密，优化处理逻辑
+ * //todo 参考 脱敏 实现基于 jackson 的 字段加密解密，优化处理逻辑  使用 typehandler 实现数据库的脱敏处理？
  *
  * @author watermelon
  * @time 2020/9/24
