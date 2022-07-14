@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  debug="false">
+
+    <springProperty scope="context" name="PROJECT_NAME" source="spring.application.name"/>
+    <springProperty scope="context" name="LOG_HOME" source="logging.params.path"/>
+    <springProperty scope="context" name="LOG_NAME" source="logging.params.name"/>
+    <springProperty scope="context" name="LOG-LEVEL" source="logging.params.level"/>
+    <springProperty scope="context" name="LOG_MAX_SIZE" source="logging.params.file.max-size"/>
+    <springProperty scope="context" name="LOG_MAX_HISTORY" source="logging.params.file.max-history"/>
+
+    <!-- 彩色日志格式 -->
+    <property name="CONSOLE_PATTERN" value="%blue(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}[%5.5L])  %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %lgn %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <property name="INFO_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p}[%6.6L] [${PROJECT_NAME}] ${PID:- } --- [%30.30t] %-40.40logger{39} [%X{cutepetLogNo}] : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <property name="ERROR_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p}[%6.6L] [${PROJECT_NAME}] ${PID:- } --- [%30.30t] %-40.40logger{39} [%X{cutepetLogNo}] : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <!-- 彩色日志依赖的渲染类 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="lgn" converterClass="com.lhs.cutepet.common.log.converter.LogNoConverter"/>
+    <!-- Console log output -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log file debug output -->
+    <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${LOG_NAME}-info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/%d{yyyy-MM, aux}/info.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>${LOG_MAX_SIZE:-100MB}</maxFileSize>
+            <maxHistory>${LOG_MAX_HISTORY:-10}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${INFO_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log file error output -->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${LOG_NAME}-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/%d{yyyy-MM, aux}/error.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>${LOG_MAX_SIZE:-100MB}</maxFileSize>
+            <maxHistory>${LOG_MAX_HISTORY:-10}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${ERROR_PATTERN}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <!-- Level: FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 -->
+    <root level="${LOG-LEVEL}">
+        <appender-ref ref="console"/>
+        <appender-ref ref="info"/>
+        <appender-ref ref="error"/>
+    </root>
+</configuration>
