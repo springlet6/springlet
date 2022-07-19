@@ -52,7 +52,15 @@
             <level>ERROR</level>
         </filter>
     </appender>
-
+    <logger name="org.spring" level="WARN" />
+    <logger name="org.springframework" level="WARN" />
+    <logger name="org.apache" level="WARN" />
+    <logger name="ClientCnxn" level="WARN" />
+    <logger name="com.alibaba" level="WARN" />
+    <logger name="org.eclipse" level="WARN" />
+    <logger name="org.hibernate" level="WARN" />
+    <logger name="org.I0Itec" level="WARN" />
+    <logger name="io.lettuce" level="WARN" />
     <!-- Level: FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 -->
     <root level="${LOG-LEVEL}">
         <appender-ref ref="console"/>
