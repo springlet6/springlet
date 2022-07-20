@@ -187,22 +187,25 @@ public class ZipUtil extends cn.hutool.core.util.ZipUtil {
             tempFile.mkdirs();
         }
 
-        String downFileName = null;
-        if (StrUtil.isBlank(zipName)) {
-            downFileName = sn + ".zip";
-        } else {
-            downFileName = zipName + ".zip";
+        try {
+            String downFileName = null;
+            if (StrUtil.isBlank(zipName)) {
+                downFileName = sn + ".zip";
+            } else {
+                downFileName = zipName + ".zip";
+            }
+
+            consumer.accept(tempFile);
+
+            response.reset();
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/octet-stream");
+            response.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode(downFileName, "utf-8"));
+            cn.hutool.core.util.ZipUtil.zip(response.getOutputStream(), CharsetUtil.defaultCharset(), false, null, tempFile);
+
+        } finally {
+            //删除临时文件
+            FileUtil.del(tempFile);
         }
-
-        consumer.accept(tempFile);
-
-        response.reset();
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("application/octet-stream");
-        response.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode(downFileName, "utf-8"));
-        cn.hutool.core.util.ZipUtil.zip(response.getOutputStream(), CharsetUtil.defaultCharset(), false, null, tempFile);
-
-        //删除临时文件
-        FileUtil.del(tempFile);
     }
 }
