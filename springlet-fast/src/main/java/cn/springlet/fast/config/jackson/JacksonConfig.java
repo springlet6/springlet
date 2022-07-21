@@ -1,4 +1,4 @@
-package cn.springlet.fast.config;
+package cn.springlet.fast.config.jackson;
 
 import cn.springlet.crypt.json.JsonDecryptDeSerializerModifier;
 import cn.springlet.crypt.json.JsonEncryptSerializerModifier;

@@ -1,4 +1,4 @@
-package cn.springlet.core.auto.exception;
+package cn.springlet.fast.config.exception;
 
 
 import cn.springlet.core.bean.web.HttpResult;

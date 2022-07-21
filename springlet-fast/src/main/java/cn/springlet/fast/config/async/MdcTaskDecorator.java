@@ -1,4 +1,4 @@
-package cn.springlet.core.auto.async;
+package cn.springlet.fast.config.async;
 
 import org.slf4j.MDC;
 import org.springframework.core.task.TaskDecorator;

@@ -1,4 +1,4 @@
-package cn.springlet.core.auto.dingtalk;
+package cn.springlet.fast.config.dingtalk;
 
 import cn.hutool.core.util.StrUtil;
 import cn.springlet.core.bean.request.BaseRequestDTO;

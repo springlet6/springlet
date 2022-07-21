@@ -1,4 +1,4 @@
-package cn.springlet.core.auto.enums;
+package cn.springlet.fast.config.enums;
 
 import cn.springlet.core.bean.web.HttpResult;
 import cn.springlet.core.util.EnumUtils;

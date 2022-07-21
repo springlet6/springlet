@@ -1,4 +1,4 @@
-package cn.springlet.core.auto.dingtalk;
+package cn.springlet.fast.config.dingtalk;
 
 import lombok.Getter;
 import lombok.Setter;

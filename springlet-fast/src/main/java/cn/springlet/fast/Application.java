@@ -1,6 +1,5 @@
 package cn.springlet.fast;
 
-import cn.springlet.core.auto.annotation.EnableSpringletAutoConfiguration;
 import cn.springlet.crypt.annotation.EnableSpringletCrypt;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -9,7 +8,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
 @Slf4j
-@EnableSpringletAutoConfiguration
 @SpringBootApplication
 @EnableSpringletCrypt
 public class Application {

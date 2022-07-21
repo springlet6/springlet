@@ -1,4 +1,4 @@
-package cn.springlet.core.auto.async;
+package cn.springlet.fast.config.async;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;

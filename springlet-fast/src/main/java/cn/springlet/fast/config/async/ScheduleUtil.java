@@ -1,4 +1,4 @@
-package cn.springlet.core.auto.async;
+package cn.springlet.fast.config.async;
 
 import cn.hutool.extra.spring.SpringUtil;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
