@@ -2,15 +2,11 @@ package cn.springlet.crypt.annotation;
 
 import cn.springlet.crypt.CryptStrategy;
 import cn.springlet.crypt.strategy.RSAStrategy;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 
 import java.lang.annotation.*;
 
-
 /**
- * 加密
- * 可作用于 String 类型字段  实体  Collection
+ * jackson 加密解密
  *
  * @author watermelon
  * @time 2020/9/24
@@ -18,8 +14,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Documented
-@Order(Ordered.HIGHEST_PRECEDENCE)
-public @interface Encrypt {
+public @interface JsonCipherText {
 
     /**
      * 算法策略

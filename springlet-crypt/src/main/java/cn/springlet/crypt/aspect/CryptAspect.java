@@ -3,18 +3,14 @@ package cn.springlet.crypt.aspect;
 import cn.hutool.core.lang.Singleton;
 import cn.springlet.core.util.StrUtil;
 import cn.springlet.crypt.CryptStrategy;
-import cn.springlet.crypt.annotation.Decrypt;
-import cn.springlet.crypt.annotation.Encrypt;
+import cn.springlet.crypt.annotation.AsyncCipherText;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -25,16 +21,15 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * 切面
- * //todo 参考 脱敏 实现基于 jackson 的 字段加密解密，优化处理逻辑  使用 typehandler 实现数据库的脱敏处理？
+ * 切面 见 {@link cn.springlet.crypt.annotation.JsonCipherText}
  *
  * @author watermelon
  * @time 2020/9/24
  */
-@Component
-@Aspect
+//@Component
+//@Aspect
 @Slf4j
-@Order(-1)
+//@Order(-1)
 public class CryptAspect {
     /**
      * 切点
@@ -111,7 +106,7 @@ public class CryptAspect {
                                 continue;
                             }
                             if (isEncrypt) {
-                                Encrypt encrypt = AnnotationUtils.findAnnotation(field, Encrypt.class);
+                                AsyncCipherText encrypt = AnnotationUtils.findAnnotation(field, AsyncCipherText.class);
                                 if (null != encrypt) {
                                     CryptStrategy service = Singleton.get(encrypt.strategy());
                                     String privateKey = encrypt.privateKey();
@@ -123,7 +118,7 @@ public class CryptAspect {
                                     }
                                 }
                             } else {
-                                Decrypt decrypt = AnnotationUtils.findAnnotation(field, Decrypt.class);
+                                AsyncCipherText decrypt = AnnotationUtils.findAnnotation(field, AsyncCipherText.class);
                                 if (null != decrypt) {
                                     CryptStrategy strategy = Singleton.get(decrypt.strategy());
                                     String privateKey = decrypt.privateKey();
@@ -157,14 +152,14 @@ public class CryptAspect {
 
     private static void itemOpt(Object item, Field field, boolean isEncrypt) throws IllegalAccessException {
         if (isEncrypt) {
-            Encrypt encrypt = AnnotationUtils.findAnnotation(field, Encrypt.class);
+            AsyncCipherText encrypt = AnnotationUtils.findAnnotation(field, AsyncCipherText.class);
             if (null != encrypt) {
                 field.setAccessible(Boolean.TRUE);
                 handleFieldEncrypt(item, field, encrypt);
                 field.setAccessible(Boolean.FALSE);
             }
         } else {
-            Decrypt decrypt = AnnotationUtils.findAnnotation(field, Decrypt.class);
+            AsyncCipherText decrypt = AnnotationUtils.findAnnotation(field, AsyncCipherText.class);
             if (null != decrypt) {
                 field.setAccessible(Boolean.TRUE);
                 handleFieldDecrypt(item, field, decrypt);
@@ -173,7 +168,7 @@ public class CryptAspect {
         }
     }
 
-    private static void handleFieldEncrypt(Object item, Field field, Encrypt encrypt) throws IllegalAccessException {
+    private static void handleFieldEncrypt(Object item, Field field, AsyncCipherText encrypt) throws IllegalAccessException {
 
         String str = (String) field.get(item);
         if (StrUtil.isBlank(str)) {
@@ -191,7 +186,7 @@ public class CryptAspect {
     }
 
     @SneakyThrows
-    private static void handleFieldDecrypt(Object item, Field field, Decrypt decrypt) {
+    private static void handleFieldDecrypt(Object item, Field field, AsyncCipherText decrypt) {
         if (null == item) {
             return;
         }
