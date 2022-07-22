@@ -65,12 +65,6 @@
                 <version>${mybatis-plus.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-generator</artifactId>
-                <version>${mybatis-plus.version}</version>
-            </dependency>
-
             <!-- knife4j swagger2 依赖配置 -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>

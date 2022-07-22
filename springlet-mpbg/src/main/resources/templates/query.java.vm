@@ -1,0 +1,57 @@
+package ${queryPackage};
+
+    #foreach($pkg in ${table.importPackages})
+    import ${pkg};
+    #end
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+#if(${entityLombokModel})
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+    #if(${chainModel})
+    import lombok.experimental.Accessors;
+    #end
+#end
+import cn.springlet.core.bean.request.BaseQueryRequestDTO;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
+import lombok.*;
+import java.math.BigDecimal;
+
+/**
+ * <p>
+ * $!{table.comment}Query
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${entityLombokModel})
+@Setter
+@Getter
+#if(${superEntityClass})
+#else
+#end
+#if(${chainModel})
+@Accessors(chain = true)
+#end
+#end
+@ApiModel(description="$!{table.comment}查询Query")
+public class ${query} extends BaseQueryRequestDTO{
+
+private static final long serialVersionUID=1L;
+
+## ----------  BEGIN 字段循环遍历  ----------
+#foreach($field in ${table.fields})
+    #if(${field.propertyName}=='isDeleted' || ${field.propertyName}=='gmtModified' ||  ${field.propertyName}=='gmtCreate' ||  ${field.propertyName}=='version')
+    #else
+    @ApiModelProperty(value = "${field.comment}")
+    private ${field.propertyType} ${field.propertyName};
+    #end
+
+#end
+## ----------  END 字段循环遍历  ----------
+
+}

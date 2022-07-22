@@ -1,0 +1,60 @@
+package ${VoPackage};
+
+#foreach($pkg in ${table.importPackages})
+import ${pkg};
+#end
+import cn.hutool.core.date.DatePattern;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+#if(${entityLombokModel})
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+    #if(${chainModel})
+    import lombok.experimental.Accessors;
+    #end
+#end
+import cn.springlet.core.bean.vo.BaseVO;
+import java.util.Date;
+import lombok.*;
+import java.math.BigDecimal;
+
+
+/**
+ * <p>
+ * $!{table.comment}
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${entityLombokModel})
+@Setter
+@Getter
+#if(${superEntityClass})
+#else
+#end
+#if(${chainModel})
+@Accessors(chain = true)
+#end
+#end
+@ApiModel(description="$!{table.comment}VO")
+public class ${vo} extends BaseVO{
+
+private static final long serialVersionUID=1L;
+
+## ----------  BEGIN 字段循环遍历  ----------
+#foreach($field in ${table.fields})
+    #if(${field.propertyName}=='isDeleted' || ${field.propertyName}=='gmtModified' ||  ${field.propertyName}=='version')
+    #else
+    @ApiModelProperty(value = "${field.comment}")
+    #if("$!field.propertyType" == "Date")
+    @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
+    #end
+    private ${field.propertyType} ${field.propertyName};
+    #end
+
+#end
+## ----------  END 字段循环遍历  ----------
+
+}

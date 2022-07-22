@@ -23,22 +23,22 @@ public class SqlConstants {
     /**
      * 创建时间字段
      */
-    public static final String CREATE_TIME = "create_time";
+    public static final String CREATE_TIME = "gmt_create";
 
     /**
      * 创建时间字段 类字段名
      */
-    public static final String CREATE_TIME_PROPERTY_NAME = "createTime";
+    public static final String CREATE_TIME_PROPERTY_NAME = "gmtCreate";
 
     /**
      * 修改时间字段
      */
-    public static final String UPDATE_TIME = "update_time";
+    public static final String UPDATE_TIME = "gmt_modified";
 
     /**
      * 修改时间字段 类字段名
      */
-    public static final String UPDATE_TIME_PROPERTY_NAME = "updateTime";
+    public static final String UPDATE_TIME_PROPERTY_NAME = "gmtModified";
 
 
     /**

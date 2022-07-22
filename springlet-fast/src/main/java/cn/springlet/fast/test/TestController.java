@@ -1,4 +1,4 @@
-package cn.springlet.fast;
+package cn.springlet.fast.test;
 
 import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;

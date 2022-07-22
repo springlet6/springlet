@@ -10,13 +10,13 @@
 
     <!-- 彩色日志格式 -->
     <property name="CONSOLE_PATTERN" value="%blue(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}[%5.5L])  %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %lgn %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
-    <property name="INFO_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p}[%6.6L] [${PROJECT_NAME}] ${PID:- } --- [%30.30t] %-40.40logger{39} [%X{cutepetLogNo}] : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
-    <property name="ERROR_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p}[%6.6L] [${PROJECT_NAME}] ${PID:- } --- [%30.30t] %-40.40logger{39} [%X{cutepetLogNo}] : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <property name="INFO_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p}[%6.6L] [${PROJECT_NAME}] ${PID:- } --- [%30.30t] %-40.40logger{39} %lgn : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+    <property name="ERROR_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p}[%6.6L] [${PROJECT_NAME}] ${PID:- } --- [%30.30t] %-40.40logger{39} %lgn : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
     <!-- 彩色日志依赖的渲染类 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
     <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
     <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
-    <conversionRule conversionWord="lgn" converterClass="com.lhs.cutepet.common.log.converter.LogNoConverter"/>
+    <conversionRule conversionWord="lgn" converterClass="cn.springlet.core.log.converter.LogNoConverter"/>
     <!-- Console log output -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

@@ -13,6 +13,7 @@ public enum ResultCodeEnum implements BaseResultCodeEnum {
     DISABLED(402, "用户已被禁用"),
     FORBIDDEN(403, "没有访问权限"),
     NON_EXISTENT(404, "用户不存在"),
+    DATA_EXISTENT(404, "数据不存在"),
 
     BAD_METHOD(405, "不允许的http方法"),
 
@@ -23,22 +24,31 @@ public enum ResultCodeEnum implements BaseResultCodeEnum {
 
     ;
 
-    ResultCodeEnum(Integer code, String msg) {
-        this.code = code;
-        this.msg = msg;
+    private Integer key;
+
+    private String value;
+
+    ResultCodeEnum(Integer key, String value) {
+        this.key = key;
+        this.value = value;
     }
 
-    private Integer code;
+    public Integer getKey() {
+        return key;
+    }
 
-    private String msg;
+    public String getValue() {
+        return value;
+    }
+
 
     @Override
     public Integer code() {
-        return code;
+        return key;
     }
 
     @Override
     public String msg() {
-        return msg;
+        return value;
     }
 }

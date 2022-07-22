@@ -1,11 +1,10 @@
-package cn.springlet.fast;
+package cn.springlet.fast.test;
 
 import cn.springlet.core.bean.vo.BaseVO;
 import cn.springlet.core.config.fastjson.DatabaseEnumDeserializer;
 import cn.springlet.core.config.fastjson.DatabaseEnumSerializer;
 import cn.springlet.core.enums.YesNoEnum;
 import cn.springlet.crypt.annotation.AsyncCipherText;
-import cn.springlet.crypt.annotation.JsonCipherText;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.hccake.ballcat.common.desensitize.enums.SlideDesensitizationTypeEnum;
 import com.hccake.ballcat.common.desensitize.json.annotation.JsonSlideDesensitize;

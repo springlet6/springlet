@@ -14,16 +14,10 @@
     <description>mybatis-plus相关</description>
 
     <dependencies>
-
         <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>cn.springlet</groupId>
+            <artifactId>springlet-core</artifactId>
+            <version>${item.version}</version>
         </dependency>
 
         <dependency>

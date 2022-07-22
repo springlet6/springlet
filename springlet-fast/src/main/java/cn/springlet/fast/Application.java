@@ -1,6 +1,7 @@
 package cn.springlet.fast;
 
 import cn.springlet.crypt.annotation.EnableSpringletCrypt;
+import cn.springlet.mybatisplus.annotation.EnableSpringletMybatisPlus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,7 @@ import org.springframework.core.env.Environment;
 @Slf4j
 @SpringBootApplication
 @EnableSpringletCrypt
+@EnableSpringletMybatisPlus
 public class Application {
 
     public static void main(String[] args) {
@@ -25,5 +27,4 @@ public class Application {
         log.info("--------------启动项目名字---------   " + environment.getProperty("spring.application.name"));
 
     }
-
 }

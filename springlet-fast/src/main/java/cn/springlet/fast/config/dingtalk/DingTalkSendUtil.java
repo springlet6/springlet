@@ -46,8 +46,6 @@ public class DingTalkSendUtil {
     /**
      * 默认推送 异常信息
      * 需要配置
-     * cutepet.dingtalk.error.secret
-     * cutepet.dingtalk.error.webhook
      * 将推送 ip + 系统名 + message
      *
      * @param message

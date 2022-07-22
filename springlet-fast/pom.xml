@@ -23,6 +23,11 @@
             <artifactId>springlet-crypt</artifactId>
             <version>${item.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.springlet</groupId>
+            <artifactId>springlet-mybatis-plus</artifactId>
+            <version>${item.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>

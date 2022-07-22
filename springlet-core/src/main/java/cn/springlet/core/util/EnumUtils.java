@@ -33,7 +33,7 @@ public class EnumUtils {
             // 2.得到所有枚举常量
             Object[] objects = clz.getEnumConstants();
             Method name = getMethod(clz, "name");
-            Method getKey = getMethod(clz, "getDataBaseKey");
+            Method getKey = getMethod(clz, "getKey");
             Method getValue = getMethod(clz, "getValue");
             List<Map<String, Object>> list = new ArrayList<>();
             Map<String, Object> map = null;
