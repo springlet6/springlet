@@ -20,6 +20,8 @@
         <module>springlet-log</module>
         <module>springlet-redis</module>
         <module>springlet-swagger2</module>
+        <module>springlet-xxljob</module>
+        <module>springlet-rocketmq</module>
     </modules>
 
 </project>

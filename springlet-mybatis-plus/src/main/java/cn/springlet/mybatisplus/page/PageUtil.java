@@ -2,7 +2,7 @@ package cn.springlet.mybatisplus.page;
 
 import cn.springlet.core.bean.request.BasePageQueryRequestDTO;
 import cn.springlet.core.constant.PageConstants;
-import cn.springlet.core.exception.web_return.ReturnMsgException;
+import cn.springlet.core.exception.web_return.ParameterVerificationException;
 import cn.springlet.core.util.ServletUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
@@ -110,7 +110,7 @@ public class PageUtil {
             return PageUtil.<T>getMpPage(pageNum, pageSize);
         } catch (NumberFormatException e) {
             //如果 分页参数不为 number类型 或者 分页参数 过大 超过  则会返回错误
-            throw new ReturnMsgException("分页参数类型错误!");
+            throw new ParameterVerificationException("分页参数类型错误!");
         }
     }
 }

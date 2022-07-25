@@ -47,6 +47,17 @@
         </dependency>
 
         <dependency>
+            <groupId>cn.springlet</groupId>
+            <artifactId>springlet-xxljob</artifactId>
+            <version>${item.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.springlet</groupId>
+            <artifactId>springlet-rocketmq</artifactId>
+            <version>${item.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>

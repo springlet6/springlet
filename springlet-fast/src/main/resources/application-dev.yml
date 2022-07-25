@@ -77,3 +77,21 @@ springlet:
   redis:
     cache:
       timeout: 21600
+  xxljob:
+    access-token:
+    admin:
+      admin-addresses: http://192.168.0.38:7777/xxl-job-admin
+    executor:
+      appname: ${spring.application.name}
+      logpath: ${logging.params.path}/jobhandler
+      logretentiondays: 30
+  # 阿里云 rocketmq
+  rocketmq:
+    accessKey: LTAI5t9jPbbhtXN2KXpAGT9C
+    secretKey: M3Vf7kLr0mF02PvTYsD43Ho5UEWHOE
+    nameSrvAddr: http://MQ_INST_1436122467007897_BXx88R7n.mq-internet-access.mq-internet.aliyuncs.com:80
+    topic: cutepet-topic
+    groupId: GID-${spring.profiles.active}-${spring.application.name}-group
+    #区分 环境+服务
+    tag: ${spring.profiles.active}-${spring.application.name}
+    instanceId: MQ_INST_1436122467007897_BXx88R7n
