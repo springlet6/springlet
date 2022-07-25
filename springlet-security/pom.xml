@@ -8,10 +8,10 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>springlet-crypt</artifactId>
+    <artifactId>springlet-security</artifactId>
     <version>${item.version}</version>
-    <name>springlet-crypt</name>
-    <description>crypt</description>
+    <name>springlet-security</name>
+    <description>security鉴权</description>
 
     <dependencies>
         <dependency>
@@ -20,20 +20,12 @@
             <version>${item.version}</version>
         </dependency>
 
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>com.hccake</groupId>
-            <artifactId>ballcat-common-desensitize</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
         </dependency>
     </dependencies>
 
