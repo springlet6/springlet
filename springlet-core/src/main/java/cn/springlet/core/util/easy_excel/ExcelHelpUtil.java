@@ -1,9 +1,10 @@
 package cn.springlet.core.util.easy_excel;
 
 
-
 import cn.springlet.core.exception.web_return.ReturnMsgException;
 import cn.springlet.core.util.ServletUtil;
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.support.ExcelTypeEnum;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -59,5 +60,10 @@ public class ExcelHelpUtil {
             e.printStackTrace();
             throw new ReturnMsgException("服务器响应异常");
         }
+    }
+
+    public static void main(String[] args) {
+        //demo
+        //EasyExcel.write(ExcelHelpUtil.getOutputStream("导出数据"), ExportVO.class).excelType(ExcelTypeEnum.XLS).sheet("数据").doWrite(exportVOList);
     }
 }
