@@ -51,7 +51,7 @@ public class Swagger2Config {
         description = StrUtil.isBlank(description) ? "接口文档描述" : description;
 
         String name = swagger2Properties.getContact().getName();
-        name = StrUtil.isBlank(name) ? "watermelon" : name;
+        name = StrUtil.isBlank(name) ? "springlet" : name;
 
         String email = swagger2Properties.getContact().getEmail();
         email = StrUtil.isBlank(email) ? "zfquan91@foxmail.com" : email;
@@ -78,6 +78,7 @@ public class Swagger2Config {
         swagger2Properties.getExcludePath().addAll(DEFAULT_EXCLUDE_PATH);
 
         ApiSelectorBuilder builder = new Docket(DocumentationType.SWAGGER_2)
+                .enable(swagger2Properties.isEnabled())
                 .apiInfo(new ApiInfoBuilder()
                         .title(title)
                         .description(description)

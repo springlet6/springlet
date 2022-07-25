@@ -101,12 +101,6 @@
                 <version>${ballcat-common-desensitize.version}</version>
             </dependency>
 
-            <!-- 公共资源池 -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-pool2</artifactId>
-                <version>${common-pool.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>org.projectlombok</groupId>

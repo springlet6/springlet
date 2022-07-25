@@ -7,6 +7,8 @@ import cn.springlet.core.enums.ResultCodeEnum;
 import cn.springlet.core.exception.web_return.HttpResultAssertException;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -19,6 +21,7 @@ import java.util.function.Supplier;
  * @author springlet
  */
 @Slf4j
+@ApiModel(description = "web响应对象")
 public class HttpResult<T> extends BaseVO {
 
     private static final long serialVersionUID = 1L;
@@ -26,21 +29,25 @@ public class HttpResult<T> extends BaseVO {
     /**
      * 状态码
      */
+    @ApiModelProperty(value = "状态码")
     private Integer code;
 
     /**
-     * 返回内容
+     * 返回消息
      */
+    @ApiModelProperty(value = "返回消息")
     private String msg;
 
     /**
      * 服务器时间
      */
+    @ApiModelProperty(value = "服务器时间")
     private String serverTime;
 
     /**
      * 数据对象
      */
+    @ApiModelProperty(value = "数据对象")
     private T data;
 
 
@@ -48,6 +55,7 @@ public class HttpResult<T> extends BaseVO {
      * 扩展参数信息
      */
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @ApiModelProperty(value = "扩展参数信息")
     private HashMap<String, Object> ext;
 
     /**

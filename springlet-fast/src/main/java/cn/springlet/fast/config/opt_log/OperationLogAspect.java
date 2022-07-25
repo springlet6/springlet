@@ -1,8 +1,6 @@
 
 package cn.springlet.fast.config.opt_log;
 
-import cn.springlet.core.util.BeanUtil;
-import cn.springlet.fast.bean.entity.OptLogDO;
 import cn.springlet.log.aspect.BaseOperationLogAspect;
 import cn.springlet.log.bean.OptLogBean;
 import cn.springlet.log.bean.OptUserBean;
@@ -29,6 +27,6 @@ public class OperationLogAspect extends BaseOperationLogAspect {
 
     @Override
     protected void insert(OptLogBean optLogBean) {
-        BeanUtil.toBean(optLogBean, OptLogDO.class).insert();
+        //BeanUtil.toBean(optLogBean, OptLogDO.class).insert();
     }
 }

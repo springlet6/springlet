@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @author watermelon
  * @time 2020/10/22
  */
-@ConfigurationProperties("springlet.cache")
+@ConfigurationProperties("springlet.redis.cache")
 @Configuration
 public class RedisCacheProperties {
 

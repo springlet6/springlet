@@ -10,7 +10,7 @@
     <artifactId>springlet-fast</artifactId>
     <version>${item.version}</version>
     <name>springlet-fast</name>
-    <description>web项目基础包</description>
+    <description>web项目脚手架</description>
 
     <dependencies>
         <dependency>
@@ -35,6 +35,18 @@
         </dependency>
 
         <dependency>
+            <groupId>cn.springlet</groupId>
+            <artifactId>springlet-redis</artifactId>
+            <version>${item.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.springlet</groupId>
+            <artifactId>springlet-swagger2</artifactId>
+            <version>${item.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
@@ -46,14 +58,10 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+
     </dependencies>
 
     <build>

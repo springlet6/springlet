@@ -3,6 +3,8 @@ package cn.springlet.fast;
 import cn.springlet.crypt.annotation.EnableSpringletCrypt;
 import cn.springlet.log.annotation.EnableSpringletLog;
 import cn.springlet.mybatisplus.annotation.EnableSpringletMybatisPlus;
+import cn.springlet.redis.annotation.EnableSpringletRedis;
+import cn.springlet.swagger2.annotation.EnableSpringletSwagger2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +16,8 @@ import org.springframework.core.env.Environment;
 @EnableSpringletCrypt
 @EnableSpringletMybatisPlus
 @EnableSpringletLog
+@EnableSpringletRedis
+@EnableSpringletSwagger2
 public class Application {
 
     public static void main(String[] args) {

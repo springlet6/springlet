@@ -1,21 +1,12 @@
 package cn.springlet.fast.test;
 
-import cn.springlet.core.bean.page.PageInfo;
-import cn.springlet.core.bean.web.HttpResult;
-import cn.springlet.fast.bean.dto.query.OptLogQuery;
-import cn.springlet.fast.bean.entity.DemoDO;
-import cn.springlet.fast.bean.entity.OptLogDO;
-import cn.springlet.fast.bean.vo.OptLogVO;
-import cn.springlet.mybatisplus.page.PageResult;
-import cn.springlet.mybatisplus.page.PageUtil;
 import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import icu.mhb.mybatisplus.plugln.core.JoinLambdaWrapper;
-import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 内部方法测试

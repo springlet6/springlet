@@ -27,9 +27,4 @@ public class Profiles {
      * 本地环境
      */
     public static final String LOCAL = "local";
-
-    /**
-     * 单元测试
-     */
-    public static final String UNIT_TESTING = "unit_testing";
 }

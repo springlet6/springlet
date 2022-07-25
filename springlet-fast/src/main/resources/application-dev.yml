@@ -1,4 +1,8 @@
 spring:
+  # 解决 2.6以上的spring boot 和 swagger 不兼容的问题
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
@@ -15,9 +19,9 @@ spring:
       connectionInitSql: SET NAMES utf8mb4 COLLATE utf8mb4_general_ci
   redis:
     database: 0
-    host: 127.0.0.1
+    host: 192.168.0.38
     port: 6379
-    password:
+    password: 123456
     timeout: 2000  # 连接超时时长（毫秒）
     lettuce:
       pool:
@@ -25,9 +29,6 @@ spring:
         max-wait: -1ms      # 连接池最大阻塞等待时间（使用负值表示没有限制）
         max-idle: 8      # 连接池中的最大空闲连接
         min-idle: 1       # 连接池中的最小空闲连接
-
-
-
 
 # mybatis-plus
 mybatis-plus:
@@ -71,3 +72,8 @@ springlet:
     error:
       secret:
       webhook:
+  swagger2:
+    enabled: true
+  redis:
+    cache:
+      timeout: 21600
