@@ -18,6 +18,7 @@
         <spring-boot.version>2.7.1</spring-boot.version>
 
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <mybatis-plus-join.version>1.1.2</mybatis-plus-join.version>
         <!--<mybatis-plus-generator.version>3.4.0</mybatis-plus-generator.version>-->
 
         <knife4j-spring-boot.version>2.0.9</knife4j-spring-boot.version>
@@ -63,6 +64,12 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>icu.mhb</groupId>
+                <artifactId>mybatis-plus-join</artifactId>
+                <version>${mybatis-plus-join.version}</version>
             </dependency>
 
             <!-- knife4j swagger2 依赖配置 -->

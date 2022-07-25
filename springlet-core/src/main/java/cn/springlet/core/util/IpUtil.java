@@ -14,6 +14,11 @@ public class IpUtil {
     public IpUtil() {
     }
 
+
+    public static String getClientIp() {
+        return ServletUtil.getClientIP();
+    }
+
     public static String getHostIp() {
         try {
             return InetAddress.getLocalHost().getHostAddress();

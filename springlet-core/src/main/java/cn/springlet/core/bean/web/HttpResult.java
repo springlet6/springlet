@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 /**
  * 统一定义返回前端对象
  *
- * @author Administrator
+ * @author springlet
  */
 @Slf4j
 public class HttpResult<T> extends BaseVO {

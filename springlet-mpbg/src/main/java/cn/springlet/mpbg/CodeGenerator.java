@@ -36,7 +36,7 @@ public class CodeGenerator {
     // 每个系统parent 包名 【 根据需求修改 】
     private static String PARENT_PACKAGE = "mpbg.cn.springlet.fast";
     //要生成的表
-    private static String[] INCLUDE = new String[]{"demo"};
+    private static String[] INCLUDE = new String[]{"demo","sys_opt_log"};
 
     public static String[] tablePrefix = new String[]{"mr_", "pt_", "or_", "td_", "sys_"};
 
@@ -61,6 +61,7 @@ public class CodeGenerator {
 
         // lombok
         strategy.setEntityLombokModel(true);
+        strategy.setChainModel(true);
         strategy.setRestControllerStyle(true);
         //是否生成字段常量
         //strategy.setEntityColumnConstant(true);

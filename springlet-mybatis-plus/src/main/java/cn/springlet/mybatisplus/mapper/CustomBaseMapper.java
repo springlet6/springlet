@@ -1,6 +1,6 @@
 package cn.springlet.mybatisplus.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import icu.mhb.mybatisplus.plugln.base.mapper.JoinBaseMapper;
 
 import java.io.Serializable;
 
@@ -14,7 +14,7 @@ import java.io.Serializable;
  * @author watermelon
  * @time 2020/10/23
  */
-public interface CustomBaseMapper<T> extends BaseMapper<T> {
+public interface CustomBaseMapper<T> extends JoinBaseMapper<T> {
     /**
      * 根据id查询一条数据 并加上 悲观锁
      *

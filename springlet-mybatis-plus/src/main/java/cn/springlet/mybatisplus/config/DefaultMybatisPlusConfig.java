@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInt
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * mp 配置
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Bean;
  * @author watermelon
  * @time 2020/10/23
  */
+@Configuration
 public class DefaultMybatisPlusConfig {
 
     /**

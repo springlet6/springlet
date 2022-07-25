@@ -1,4 +1,4 @@
-package cn.springlet.fast.config.log;
+package cn.springlet.log.filter;
 
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;

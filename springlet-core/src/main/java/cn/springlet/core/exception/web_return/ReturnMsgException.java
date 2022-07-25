@@ -51,19 +51,19 @@ public class ReturnMsgException extends RuntimeException {
         this.message = args == null || args.length == 0 ? message : StrUtil.specialFormat(message, this.getArgs());
     }
 
-    public void printMsg() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("业务错误统一返回->");
-        stringBuilder.append("错误code：");
-        stringBuilder.append(this.getCode());
-        stringBuilder.append(", ");
-        stringBuilder.append("返回信息：");
-        stringBuilder.append(this.getMessage());
-        stringBuilder.append(", ");
-        stringBuilder = ExceptionHandlerUtil.printExceptionLog(stringBuilder, this);
-
-        log.error(stringBuilder.toString());
-    }
+    //public void printMsg() {
+    //    StringBuilder stringBuilder = new StringBuilder();
+    //    stringBuilder.append("业务错误统一返回->");
+    //    stringBuilder.append("错误code：");
+    //    stringBuilder.append(this.getCode());
+    //    stringBuilder.append(", ");
+    //    stringBuilder.append("返回信息：");
+    //    stringBuilder.append(this.getMessage());
+    //    stringBuilder.append(", ");
+    //    stringBuilder = ExceptionHandlerUtil.printExceptionLog(stringBuilder, this);
+    //
+    //    log.error(stringBuilder.toString());
+    //}
 
     @Override
     public String getMessage() {

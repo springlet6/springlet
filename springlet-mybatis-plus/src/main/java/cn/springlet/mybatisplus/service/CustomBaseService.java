@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.springlet.core.exception.web_return.DataDoesNotExistException;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+import icu.mhb.mybatisplus.plugln.base.service.JoinIService;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author watermelon
  * @time 2020/10/23
  */
-public interface CustomBaseService<T> extends IService<T> {
+public interface CustomBaseService<T> extends JoinIService<T> {
 
     /**
      * count

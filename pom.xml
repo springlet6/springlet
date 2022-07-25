@@ -6,6 +6,7 @@
     <groupId>cn.springlet</groupId>
     <artifactId>core</artifactId>
     <version>0.0.1</version>
+    <packaging>pom</packaging>
     <name>core</name>
 
     <properties>
@@ -15,8 +16,8 @@
     <modules>
         <module>springlet-core</module>
         <module>springlet-crypt</module>
-        <module>springlet-fast</module>
         <module>springlet-mybatis-plus</module>
+        <module>springlet-log</module>
     </modules>
 
 </project>

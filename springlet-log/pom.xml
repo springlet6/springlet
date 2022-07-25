@@ -7,52 +7,19 @@
         <artifactId>springlet-bom</artifactId>
         <version>0.0.1</version>
     </parent>
-    <artifactId>springlet-fast</artifactId>
-    <version>${item.version}</version>
-    <name>springlet-fast</name>
-    <description>web项目基础包</description>
 
+    <artifactId>springlet-log</artifactId>
+    <version>${item.version}</version>
+    <name>springlet-log</name>
+    <description>log</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>cn.springlet</groupId>
             <artifactId>springlet-core</artifactId>
             <version>${item.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.springlet</groupId>
-            <artifactId>springlet-crypt</artifactId>
-            <version>${item.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.springlet</groupId>
-            <artifactId>springlet-mybatis-plus</artifactId>
-            <version>${item.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.springlet</groupId>
-            <artifactId>springlet-log</artifactId>
-            <version>${item.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 

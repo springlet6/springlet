@@ -6,6 +6,7 @@ import cn.springlet.mybatisplus.mapper.CustomBaseMapper;
 import cn.springlet.mybatisplus.service.CustomBaseService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import icu.mhb.mybatisplus.plugln.base.service.impl.JoinServiceImpl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  * @author watermelon
  * @time 2020/10/23
  */
-public class CustomBaseServiceImpl<M extends CustomBaseMapper<T>, T> extends ServiceImpl<M, T> implements CustomBaseService<T> {
+public class CustomBaseServiceImpl<M extends CustomBaseMapper<T>, T> extends JoinServiceImpl<M, T> implements CustomBaseService<T> {
     @Override
     public long count(T entity) {
         QueryWrapper<T> queryWrapper = new QueryWrapper<>(entity);

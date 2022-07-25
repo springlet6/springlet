@@ -1,6 +1,7 @@
 package cn.springlet.fast;
 
 import cn.springlet.crypt.annotation.EnableSpringletCrypt;
+import cn.springlet.log.annotation.EnableSpringletLog;
 import cn.springlet.mybatisplus.annotation.EnableSpringletMybatisPlus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +13,7 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication
 @EnableSpringletCrypt
 @EnableSpringletMybatisPlus
+@EnableSpringletLog
 public class Application {
 
     public static void main(String[] args) {

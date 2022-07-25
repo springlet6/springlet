@@ -6,7 +6,6 @@ import cn.springlet.core.enums.ResultCodeEnum;
 import cn.springlet.core.exception.web_return.HttpResultAssertException;
 import cn.springlet.core.exception.web_return.ParameterVerificationException;
 import cn.springlet.core.exception.web_return.ReturnMsgException;
-import cn.springlet.core.util.ExceptionHandlerUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
@@ -31,7 +30,6 @@ public class DefaultExceptionAdvice {
      */
     @ExceptionHandler(HttpResultAssertException.class)
     public HttpResult HttpResultAssertException(HttpResultAssertException e) {
-        e.printMsg();
         log.error("远程调用断言异常", e);
         return HttpResult.error(e.getCode(), e.getMessage());
     }
@@ -53,7 +51,7 @@ public class DefaultExceptionAdvice {
      */
     @ExceptionHandler(ReturnMsgException.class)
     public HttpResult returnMsgException(ReturnMsgException e) {
-        e.printMsg();
+        log.error(e.getMessage(), e);
         return HttpResult.error(e.getCode(), e.getMessage());
     }
 
@@ -124,13 +122,7 @@ public class DefaultExceptionAdvice {
 
     @ExceptionHandler(Exception.class)
     public HttpResult handleException(Exception e) {
-        StringBuilder stringBuilder = ExceptionHandlerUtil.printExceptionLog(null, e);
-
-        log.error(stringBuilder.toString());
         log.error(e.getMessage(), e);
-
-        // 发送异常消息
-        //return HttpResult.error(e.getMessage());
         return HttpResult.error("服务器异常");
     }
 }

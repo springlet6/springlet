@@ -1,6 +1,6 @@
 package ${package.Controller};
 
-
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 #if(${restControllerStyle})
@@ -29,7 +29,7 @@ import cn.springlet.core.bean.page.PageInfo ;
 import cn.springlet.core.bean.web.HttpResult ;
 import cn.springlet.mybatisplus.page.PageResult ;
 import cn.springlet.mybatisplus.page.PageUtil;
-import cn.springlet.log.annotation.PrintAspectLog;
+import cn.springlet.log.annotation.AspectLog;
 
 import java.util.List;
 import java.util.Objects;
@@ -80,7 +80,7 @@ public class ${table.controllerName} {
 
     @Transactional
     @PostMapping("/save_or_update")
-    @PrintAspectLog("$!{table.comment}-新增或修改")
+    @AspectLog("$!{table.comment}-新增或修改")
     @ApiOperation("$!{table.comment}-新增或修改")
     public HttpResult<${vo}> addOrUpdate(@RequestBody @Validated ${dto} dto) {
 
@@ -104,7 +104,7 @@ public class ${table.controllerName} {
 
     @Transactional
     @PostMapping("/delete")
-    @PrintAspectLog("$!{table.comment}-删除")
+    @AspectLog("$!{table.comment}-删除")
     @ApiOperation("$!{table.comment}-删除")
     public HttpResult delete(@RequestBody @Validated ${dto} dto) {
             if (Objects.isNull(dto.${getPK}()) && CollUtil.isEmpty(dto.${getPK}List())) {
