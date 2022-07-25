@@ -18,6 +18,8 @@
         <module>springlet-crypt</module>
         <module>springlet-mybatis-plus</module>
         <module>springlet-log</module>
+        <module>springlet-redis</module>
+        <module>springlet-swagger2</module>
     </modules>
 
 </project>

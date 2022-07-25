@@ -31,6 +31,7 @@
 
         <easyexcel.version>2.2.7</easyexcel.version>
         <ballcat-common-desensitize.version>0.7.1</ballcat-common-desensitize.version>
+        <redisson.version>3.14.0</redisson.version>
 
 
         <item.version>1.0.0</item.version>
@@ -125,6 +126,11 @@
                 <version>${easyexcel.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
