@@ -32,6 +32,7 @@
         <easyexcel.version>2.2.7</easyexcel.version>
         <ballcat-common-desensitize.version>0.7.1</ballcat-common-desensitize.version>
         <redisson.version>3.14.0</redisson.version>
+        <xxl-job-core.version>2.3.0</xxl-job-core.version>
 
 
         <item.version>1.0.0</item.version>
@@ -124,6 +125,13 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
                 <version>${redisson.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job-core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
