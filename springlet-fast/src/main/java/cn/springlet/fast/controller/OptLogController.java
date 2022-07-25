@@ -12,6 +12,7 @@ import cn.springlet.fast.crud.OptLogCrud;
 import cn.springlet.log.annotation.AspectLog;
 import cn.springlet.mybatisplus.page.PageResult;
 import cn.springlet.mybatisplus.page.PageUtil;
+import cn.springlet.redis.annotation.NoRepeatSubmit;
 import cn.springlet.redis.util.RedisUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -49,6 +50,7 @@ public class OptLogController {
 
     @PostMapping("/page_list")
     @ApiOperation("sys_opt_log 分页列表")
+    @NoRepeatSubmit(key = "#query.optAccount", errMsg = "ccccc", time = 5000L)
     public HttpResult<PageInfo<OptLogVO>> pageList(@RequestBody @Validated OptLogQuery query) {
         String keys = query.keysTrim();
 

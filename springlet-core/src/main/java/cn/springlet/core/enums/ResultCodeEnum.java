@@ -16,6 +16,7 @@ public enum ResultCodeEnum implements BaseResultCodeEnum {
     DATA_EXISTENT(404, "数据不存在"),
 
     BAD_METHOD(405, "不允许的http方法"),
+    REPEAT_SUBMIT(406, "重复提交"),
 
     ERROR(500, "系统内部错误"),
     ERROR_REQUEST(500, "请求失败"),

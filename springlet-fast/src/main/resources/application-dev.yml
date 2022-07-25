@@ -18,7 +18,7 @@ spring:
       #使用utf8mb4编码
       connectionInitSql: SET NAMES utf8mb4 COLLATE utf8mb4_general_ci
   redis:
-    database: 0
+    database: 14
     host: 192.168.0.38
     port: 6379
     password: 123456
