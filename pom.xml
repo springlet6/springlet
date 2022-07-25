@@ -22,6 +22,7 @@
         <module>springlet-swagger2</module>
         <module>springlet-xxljob</module>
         <module>springlet-rocketmq</module>
+        <module>springlet-security</module>
     </modules>
 
 </project>
